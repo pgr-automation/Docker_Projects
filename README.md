@@ -156,3 +156,32 @@ This guide provides a comprehensive list of essential Docker commands with expla
 ---
 
 Master these commands to manage Docker images, containers, networks, and volumes with ease. Happy Dockering!
+
+```Dockerfile
+# Use Ubuntu as the base image
+FROM ubuntu:20.04
+
+# Metadata about the image
+LABEL maintainer="you@example.com"
+
+# Set up an argument with default value
+ARG NODE_VERSION=14
+
+# Install necessary packages and clean up
+RUN apt-get update && apt-get install -y nodejs=$NODE_VERSION
+
+# Set an environment variable
+ENV APP_HOME /app
+
+# Set the working directory
+WORKDIR $APP_HOME
+
+# Copy the application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Define the command to start the app
+CMD ["node", "server.js"]
+```
